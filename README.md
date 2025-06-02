@@ -14,28 +14,39 @@
 4) Visualize the result using matplotlib.
 
 ### Program:
-```python
-# Visitor segmentation based on characteristics
+```
 # read the data
-/*WRITE YOUR CODE HERE
+import pandas as pd
+visitor_df = pd.read_csv('/content/clustervisitor.csv')
 
 # Perform segmentation based on characteristics (e.g., age groups)
-/*WRITE YOUR CODE HERE
+age_groups = {
+    'Young': visitor_df['Age'] <= 30,
+    'Middle-aged': (visitor_df['Age'] > 30) & (visitor_df['Age'] <= 50),
+    'Elderly': visitor_df['Age'] > 50
+}
+
+for group, condition in age_groups.items():  
+    visitors_in_group = visitor_df[condition] 
+    print(f"Visitors in {group} age group:")
+    print(visitors_in_group)
+
 
 ```
 ### Output:
+![w1](https://github.com/Ritika-2706/WDM_EXP4/assets/93427238/c0a04016-be20-4249-a64a-cc24b8e28f94)
 
 ### Visualization:
-```python
-# Create a list to store counts of visitors in each age group
-/*WRITE YOUR CODE HERE
+```# Create a list to store counts of visitors in each age group
+visitor_counts=[]
 
 # Count visitors in each age group
-/*WRITE YOUR CODE HERE
+for group,condition in age_groups.items():
+  visitors_in_group=visitor_df[condition]
+  visitor_counts.append(len(visitors_in_group))
     
 # Define age group labels and plot a bar chart
-/*WRITE YOUR CODE HERE
-
+age_group_labels=list(age_groups.keys())
 plt.figure(figsize=(8, 6))
 plt.bar(age_group_labels, visitor_counts, color='skyblue')
 plt.xlabel('Age Groups')
@@ -44,6 +55,8 @@ plt.title('Visitor Distribution Across Age Groups')
 plt.show()
 ```
 ### Output:
+![w2](https://github.com/Ritika-2706/WDM_EXP4/assets/93427238/ed86dbdc-2273-42e3-b0b4-9dd13c3ad483)
 
 
 ### Result:
+Thus the cluster and visitor segmentation for navigation patterns was implemented successfully in python.
